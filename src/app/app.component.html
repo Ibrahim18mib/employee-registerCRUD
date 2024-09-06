@@ -31,7 +31,7 @@
             <button class="btn btn-success" (click)="onEdit(emp.empId)">
               Edit
             </button>
-            <button class="btn btn-danger ml-10" (click)="onDelete(emp.empId)">Delete</button>
+            <button class="btn btn-danger ml-10" (click)="onDelete(emp.empId)">Deleted</button>
           </td>
         </tr>
       </tbody>
@@ -54,65 +54,39 @@
     <div class="progress-wrapper">
       <div id="progress-bar-container">
         <ul>
-          <li
-            class="step step01"
-            (click)="setActiveStep(step)"
-            [ngClass]="step.stepName == activeStep.stepName ? 'active' : ''"
-            *ngFor="let step of stepList"
-          >
+          <li class="step step01" (click)="setActiveStep(step)"
+            [ngClass]="step.stepName == activeStep.stepName ? 'active' : ''" *ngFor="let step of stepList">
             <div class="step-inner">{{ step.stepName }}</div>
           </li>
         </ul>
         <div id="line">
-          <div
-            id="line-progress"
-            [style.width.%]="stepperCompletionValue"
-          ></div>
+          <div id="line-progress" [style.width.%]="stepperCompletionValue"></div>
         </div>
         <!-- progress-bar-container -->
         <div id="progress-content-section">
-          <div
-            class="section-content step1 active"
-            *ngIf="activeStep.stepName == 'Basic Details'"
-          >
+          <div class="section-content step1 active" *ngIf="activeStep.stepName == 'Basic Details'">
             <h2>Step 1</h2>
             <div class="container-fluid">
               <div class="row">
                 <div class="form-group col-md-4">
                   <label>Name :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empName"
-                    placeholder="Enter Name"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empName" placeholder="Enter Name" class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                   <label>Email :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empEmailId"
-                    placeholder="Enter Email"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empEmailId" placeholder="Enter Email"
+                    class="form-control" />
                 </div>
                 <div class="form-group col-md-4">
                   <label>Password :</label>
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    class="form-control"
-                  />
+                  <input type="password" placeholder="Enter Password" class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <!--Latest version *ngfor-> @For used-->
                 <div class="form-group col-md-6">
                   <label>Designation :</label>
-                  <select
-                    class="form-select"
-                    [(ngModel)]="empObject.empDesignationId"
-                  >
+                  <select class="form-select" [(ngModel)]="empObject.empDesignationId">
                     <option value="">Select Designation</option>
                     @for (item of DesignationLists;track $index){
                     <option [value]="item.designationId">
@@ -126,140 +100,85 @@
                   <label>Roles :</label>
                   <select class="form-select" [(ngModel)]="empObject.roleId">
                     <option value="">Select Roles</option>
-                    <option
-                      *ngFor="let item of RolesLists"
-                      [value]="item.roleId"
-                    >
+                    <option *ngFor="let item of RolesLists" [value]="item.roleId">
                       {{ item.role }}
                     </option>
                   </select>
                 </div>
                 <div class="form-group col-md-6">
                   <label>Contact No :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empContactNo"
-                    placeholder="Enter Contact No"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empContactNo" placeholder="Enter Contact No"
+                    class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>Alternate Contact No :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empAltContactNo"
-                    placeholder="Alternate Contact No."
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empAltContactNo" placeholder="Alternate Contact No."
+                    class="form-control" />
                 </div>
                 <div class="form-group col-md-6">
                   <label>Personal Email ID :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empPersonalEmailId"
-                    placeholder="Enter Personal EmailID"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empPersonalEmailId" placeholder="Enter Personal EmailID"
+                    class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>Total Years of Experience :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empExpTotalYear"
-                    placeholder="Enter total Years of Experience"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empExpTotalYear"
+                    placeholder="Enter total Years of Experience" class="form-control" />
                 </div>
                 <div class="form-group col-md-6">
                   <label>Total Month of Experience :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empExpTotalMonth"
-                    placeholder="Enter month of Experience"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empExpTotalMonth" placeholder="Enter month of Experience"
+                    class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>City :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empCity"
-                    placeholder="Enter City"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empCity" placeholder="Enter City" class="form-control" />
                 </div>
                 <div class="form-group col-md-6">
                   <label>State :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empState"
-                    placeholder="Enter State"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empState" placeholder="Enter State" class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
                   <label>Address :</label>
-                  <textarea
-                    placeholder="Enter Address"
-                    class="form-control"
-                  ></textarea>
+                  <textarea placeholder="Enter Address" class="form-control"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>Pincode :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empPinCode"
-                    placeholder="Enter Pincode"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empPinCode" placeholder="Enter Pincode"
+                    class="form-control" />
                 </div>
                 <div class="form-group col-md-6">
                   <label>Personal City :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empPerCity"
-                    placeholder="Enter Personal City"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empPerCity" placeholder="Enter Personal City"
+                    class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>Personal State :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empPerState"
-                    placeholder="Enter Personal State"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empPerState" placeholder="Enter Personal State"
+                    class="form-control" />
                 </div>
                 <div class="form-group col-md-6">
                   <label>Personal Pin Code :</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="empObject.empPerPinCode"
-                    placeholder="Enter Personal Pin Code"
-                    class="form-control"
-                  />
+                  <input type="text" [(ngModel)]="empObject.empPerPinCode" placeholder="Enter Personal Pin Code"
+                    class="form-control" />
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <label>Personal Address :</label>
-                  <textarea
-                    placeholder="Enter Personal Address"
-                    class="form-control"
-                  ></textarea>
+                  <textarea placeholder="Enter Personal Address" class="form-control"></textarea>
                 </div>
               </div>
             </div>
@@ -278,10 +197,7 @@
       </div>
     </div> -->
 
-          <div
-            class="section-content step2 active"
-            *ngIf="activeStep.stepName == 'Skills'"
-          >
+          <div class="section-content step2 active" *ngIf="activeStep.stepName == 'Skills'">
             <h2>Step 2</h2>
             <div class="container-fluid">
               <div class="form-group mt-2" id="tblSkill">
@@ -300,28 +216,15 @@
                       <tbody>
                         <tr *ngFor="let skill of empObject.erpEmployeeSkills">
                           <td>
-                            <input
-                              type="text"
-                              [(ngModel)]="skill.skill"
-                              placeholder="Skill"
-                              class="form-control"
-                            />
+                            <input type="text" [(ngModel)]="skill.skill" placeholder="Skill" class="form-control" />
                           </td>
                           <td>
-                            <input
-                              type="text"
-                              placeholder="Total Experience"
-                              class="form-control"
-                              [(ngModel)]="skill.totalYearExp"
-                            />
+                            <input type="text" placeholder="Total Experience" class="form-control"
+                              [(ngModel)]="skill.totalYearExp" />
                           </td>
                           <td>
-                            <input
-                              type="text"
-                              [(ngModel)]="skill.lastVersionUsed"
-                              placeholder="Last Version"
-                              class="form-control"
-                            />
+                            <input type="text" [(ngModel)]="skill.lastVersionUsed" placeholder="Last Version"
+                              class="form-control" />
                           </td>
 
                           <td class="btn-container">
@@ -335,10 +238,7 @@
                         </tr>
                         <tr>
                           <td colspan="4">
-                            <button
-                              class="btn btn-sm btn-info"
-                              (click)="addSkills()"
-                            >
+                            <button class="btn btn-sm btn-info" (click)="addSkills()">
                               Add
                             </button>
                           </td>
@@ -359,10 +259,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="section-content step3 active"
-            *ngIf="activeStep.stepName == 'Experience'"
-          >
+          <div class="section-content step3 active" *ngIf="activeStep.stepName == 'Experience'">
             <h2>Step 3</h2>
             <div class="container-fluid">
               <div class="form-group mt-2" id="tblExperience">
@@ -383,44 +280,23 @@
                       <tbody>
                         <tr *ngFor="let exp of empObject.ermEmpExperiences">
                           <td>
-                            <input
-                              type="text"
-                              [(ngModel)]="exp.companyName"
-                              class="form-control"
-                              placeholder="Company"
-                            />
+                            <input type="text" [(ngModel)]="exp.companyName" class="form-control"
+                              placeholder="Company" />
                           </td>
                           <td>
-                            <input
-                              type="date"
-                              [(ngModel)]="exp.startDate"
-                              class="form-control"
-                              placeholder="Start Date"
-                            />
+                            <input type="date" [(ngModel)]="exp.startDate" class="form-control"
+                              placeholder="Start Date" />
                           </td>
                           <td>
-                            <input
-                              type="date"
-                              [(ngModel)]="exp.endDate"
-                              class="form-control"
-                              placeholder="End Date"
-                            />
+                            <input type="date" [(ngModel)]="exp.endDate" class="form-control" placeholder="End Date" />
                           </td>
                           <td>
-                            <input
-                              type="text"
-                              [(ngModel)]="exp.designation"
-                              class="form-control"
-                              placeholder="Designation"
-                            />
+                            <input type="text" [(ngModel)]="exp.designation" class="form-control"
+                              placeholder="Designation" />
                           </td>
                           <td>
-                            <input
-                              type="text"
-                              [(ngModel)]="exp.projectsWorkedOn"
-                              class="form-control"
-                              placeholder="Project"
-                            />
+                            <input type="text" [(ngModel)]="exp.projectsWorkedOn" class="form-control"
+                              placeholder="Project" />
                           </td>
 
                           <td class="col-md-12 btn-container d-flex">
@@ -434,10 +310,7 @@
                         </tr>
                         <tr>
                           <td colspan="6">
-                            <button
-                              class="btn btn-sm btn-info"
-                              (click)="addExperience()"
-                            >
+                            <button class="btn btn-sm btn-info" (click)="addExperience()">
                               Add
                             </button>
                           </td>
@@ -451,18 +324,10 @@
             </div>
             <div class="row">
               <div class="col-12 text-end">
-                <button
-                  class="btn btn-success"
-                  *ngIf="empObject.empId !== 0"
-                  (click)="updateEmployee()"
-                >
+                <button class="btn btn-success" *ngIf="empObject.empId !== 0" (click)="updateEmployee()">
                   Update Employee
                 </button>
-                <button
-                  class="btn btn-primary"
-                  *ngIf="empObject.empId === 0"
-                  (click)="saveEmployee()"
-                >
+                <button class="btn btn-primary" *ngIf="empObject.empId === 0" (click)="saveEmployee()">
                   SAVE Employee
                 </button>
               </div>
